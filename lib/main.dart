@@ -7,6 +7,7 @@ import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/voting_screen.dart';
 import 'screens/results_screen.dart';
+import 'screens/verification_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomeScreen(),
         '/vote': (context) => VotingScreen(),
         '/results': (context) => ResultsScreen(),
+        '/verification': (context) => VerificationScreen(),
       },
     );
   }

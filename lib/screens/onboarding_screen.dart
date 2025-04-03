@@ -32,7 +32,7 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     // Store language preference if needed
-                    Navigator.pushReplacementNamed(context, '/login');
+                    Navigator.pushReplacementNamed(context, '/verification');
                   },
                   child: Text(lang, style: TextStyle(fontSize: 18)),
                 ),

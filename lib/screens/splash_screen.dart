@@ -14,25 +14,25 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // Navigate after a short delay
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 2), () {
       // ignore: use_build_context_synchronously
-      Navigator.pushReplacementNamed(context, '/onboarding');
+      Navigator.pushReplacementNamed(context, '/verification');
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // Enhanced animated logo could be added here
-            FlutterLogo(size: 120),
+            Image.asset('assets/images/logo.png', width: 120, height: 120),
             SizedBox(height: 20),
             Text(
-              'Empowering Every Indian Voice',
+              'Decentralized Voting System',
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.white,

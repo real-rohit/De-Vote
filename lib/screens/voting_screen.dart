@@ -1,7 +1,6 @@
 // lib/screens/voting_screen.dart
 import 'package:de_vote/services/blockchain_service.dart';
 import 'package:de_vote/widgets/candidate_card.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class VotingScreen extends StatefulWidget {
@@ -22,18 +21,17 @@ class _VotingScreenState extends State<VotingScreen> {
   bool isLoading = false;
   String transactionHash = '';
   final BlockchainService blockchainService = BlockchainService();
-
   Future<void> _castVote() async {
     setState(() {
       isLoading = true;
     });
     try {
+      print("Casting vote for candidate ID: $selectedCandidateId");
       String txHash = await blockchainService.vote(selectedCandidateId);
       setState(() {
         transactionHash = txHash;
       });
       showDialog(
-        // ignore: use_build_context_synchronously
         context: context,
         builder:
             (context) => AlertDialog(
@@ -48,13 +46,10 @@ class _VotingScreenState extends State<VotingScreen> {
             ),
       );
     } catch (e) {
-      if (kDebugMode) {
-        print("Error: $e");
-      }
+      print("Error casting vote: $e");
       ScaffoldMessenger.of(
-        // ignore: use_build_context_synchronously
         context,
-      ).showSnackBar(SnackBar(content: Text("Error casting vote")));
+      ).showSnackBar(SnackBar(content: Text("Error casting vote: $e")));
     } finally {
       setState(() {
         isLoading = false;
